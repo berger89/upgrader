@@ -263,7 +263,12 @@ class Upgrader with WidgetsBindingObserver {
         }
       }
 
-      _installedVersion = _packageInfo!.version;
+      int indexBuildNumber = _packageInfo!.version.indexOf('#');
+      if (indexBuildNumber != -1) {
+        _installedVersion = _packageInfo!.version.substring(0, indexBuildNumber);
+      } else {
+        _installedVersion = _packageInfo!.version;
+      }
 
       await _updateVersionInfo();
 
