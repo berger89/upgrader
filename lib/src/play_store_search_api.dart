@@ -273,7 +273,9 @@ extension PlayStoreResults on PlayStoreSearchAPI {
           storeVersionStartIndex, storeVersionEndIndex);
 
       // storeVersion might be: 'Varies with device', which is not a valid version.
-      version = Version.parse(storeVersion).toString();
+      String subStoreVersion = storeVersion.substring(0, storeVersion.indexOf('#'));
+      print('upgrader: subStoreVersion: $subStoreVersion');
+      version = Version.parse(subStoreVersion).toString();
     } catch (e) {
       if (debugLogging) {
         print('upgrader: PlayStoreResults.redesignedVersion exception: $e');
