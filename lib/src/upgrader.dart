@@ -269,6 +269,7 @@ class Upgrader with WidgetsBindingObserver {
       } else {
         _installedVersion = _packageInfo!.version;
       }
+      print('upgrader: substring installedVersion: $_installedVersion');
 
       await _updateVersionInfo();
 
